@@ -1,0 +1,46 @@
+name: ${name}
+main: ${groupId}.${artifactId}.Plugin
+version: ${version}
+description: ${description}
+authors: [CoolV1994]
+commands:
+  itemname:
+    aliases: [in, renameitem, nameitem, setitemname]
+    description: Rename an item. Color codes supported
+    usage: /<command> [name]
+    permission: portables.rename.command
+    permission-message: You do not have permission to use this command.
+  itemnamecolor:
+    aliases: [inc, recoloritem, namecoloritem]
+    description: Change the color of an items name.
+    usage: /<command> [name]
+    permission: portables.recolor.command
+    permission-message: You do not have permission to use this command.
+  itemlore:
+    aliases: [il, loreitem, setitemlore, setlore]
+    description: Change the items lore.
+    usage: /<command> [lore]
+    permission: portables.lore.command
+    permission-message: You do not have permission to use this command.
+permissions:
+    nameitem.*:
+        description: Gives all NameItem permissions.
+        children:
+            nameitem.rename.command: true
+            nameitem.rename.any: true
+            nameitem.recolor.command: true
+            nameitem.recolor.any: true
+            nameitem.lore.command: true
+            nameitem.lore.any: true
+    nameitem.rename.command:
+        description: Access to itemname command.
+    nameitem.rename.any:
+        description: Rename any item.
+    nameitem.recolor.command:
+        description: Access to itemnamecolor command.
+    nameitem.recolor.any:
+        description: Recolor any items name.
+    nameitem.lore.command:
+        description: Access to itemlore command.
+    nameitem.lore.any:
+        description: Set lore for any item.

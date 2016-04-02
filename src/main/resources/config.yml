@@ -1,0 +1,5 @@
+# NameItem Configuration
+#
+# Allow other plugins to listen for item rename events.
+# This so plugins that have important names and lores won't break.
+useEvents: true
