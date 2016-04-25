@@ -9,7 +9,7 @@
 	<version>1.0</version>
 
 	<name>NameItem</name>
-	<description>Rename items</description>
+	<description>Rename items without breaking plugins.</description>
 
 	<repositories>
             <repository>
