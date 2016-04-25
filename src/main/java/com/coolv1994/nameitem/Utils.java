@@ -80,8 +80,10 @@ public class Utils {
     }
 
     public static void renameItem(Player player, ItemStack item, String name) {
-        if (name.length() > 30)
-            name = name.substring(0, 30);
+        int max = Plugin.getInstance().getConfig().getInt("maxNameChars");
+        if (name.length() > max) {
+            name = name.substring(0, max);
+        }
         name = ChatColor.translateAlternateColorCodes('&', name);
         ItemMeta metaData = item.getItemMeta();
         metaData.setDisplayName(name);
@@ -99,12 +101,19 @@ public class Utils {
     }
 
     public static void setItemLore(Player player, ItemStack item, String lore) {
+        int maxChars = Plugin.getInstance().getConfig().getInt("maxLoreChars");
+        int maxLines = Plugin.getInstance().getConfig().getInt("maxLoreLines");
         lore = ChatColor.translateAlternateColorCodes('&', lore);
         String[] loreA = lore.split("\\{N\\}");
-        List<String> loreL = new ArrayList<>();
+        List<String> loreL = new ArrayList<String>();
+        int line = 0;
         for (String loreS : loreA) {
-            if (loreS.length() > 30)
-                loreS = loreS.substring(0, 30);
+            if (line > maxLines) {
+                break;
+            }
+            if (loreS.length() > maxChars) {
+                loreS = loreS.substring(0, maxChars);
+            }
             loreL.add(loreS);
         }
         ItemMeta metaData = item.getItemMeta();
