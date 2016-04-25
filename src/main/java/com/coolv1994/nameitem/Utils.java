@@ -108,6 +108,7 @@ public class Utils {
         List<String> loreL = new ArrayList<String>();
         int line = 0;
         for (String loreS : loreA) {
+            line++;
             if (line > maxLines) {
                 break;
             }
